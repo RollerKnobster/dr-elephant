@@ -37,11 +37,11 @@ public class Global extends GlobalSettings {
     Logger.info("Starting Application...");
 
     fixJavaKerberos();
-    Logger.info("Fixed Kerberos.")
+    Logger.info("Fixed Kerberos.");
     _drElephantThread = new Thread(DrElephant.getInstance());
-    Logger.info("Created instance.")
+    Logger.info("Created instance.");
     _drElephantThread.start();
-    Logger.info("Started.")
+    Logger.info("Started.");
   }
 
   public void onStop(Application app) {
