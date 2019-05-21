@@ -19,8 +19,6 @@ package com.linkedin.drelephant;
 import java.io.IOException;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.log4j.Logger;
-
 import play.Logger;
 
 import com.linkedin.drelephant.analysis.HDFSContext;
