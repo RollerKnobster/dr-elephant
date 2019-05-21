@@ -40,10 +40,14 @@ public class DrElephant implements Runnable {
 
   private DrElephant() {
     HDFSContext.load();
+    Logger.info("Loaded HDFS context");
     Configuration configuration = ElephantContext.instance().getAutoTuningConf();
+    Logger.info("Got autotuningconf.");
     autoTuningEnabled = configuration.getBoolean(AUTO_TUNING_ENABLED, false);
+    Logger.info("Enabled autotuning.");
     logger.debug("Auto Tuning Configuration: " + configuration.toString());
     _elephant = new ElephantRunner();
+    Logger.info("New elephant runner.");
     if (autoTuningEnabled) {
       _autoTuner = new AutoTuner();
       _autoTunerThread = new Thread(_autoTuner, "Auto Tuner Thread");
