@@ -19,7 +19,7 @@ package com.linkedin.drelephant;
 import java.io.IOException;
 
 import org.apache.hadoop.conf.Configuration;
-import play.Logger;
+import org.apache.log4j.Logger;
 
 import com.linkedin.drelephant.analysis.HDFSContext;
 
@@ -40,14 +40,10 @@ public class DrElephant implements Runnable {
 
   private DrElephant() {
     HDFSContext.load();
-    play.Logger.info("Loaded HDFS context");
     Configuration configuration = ElephantContext.instance().getAutoTuningConf();
-    play.Logger.info("Got autotuningconf.");
-    autoTuningEnabled = configuration.getBoolean(AUTO_TUNING_ENABLED, false);
-    play.Logger.info("Enabled autotuning.");
+    autoTuningEnabled = false;
     logger.debug("Auto Tuning Configuration: " + configuration.toString());
     _elephant = new ElephantRunner();
-    Logger.info("New elephant runner.");
     if (autoTuningEnabled) {
       _autoTuner = new AutoTuner();
       _autoTunerThread = new Thread(_autoTuner, "Auto Tuner Thread");
